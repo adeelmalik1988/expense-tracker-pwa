@@ -1,7 +1,0 @@
-.transspan{
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
-    border: 2px solid grey;
-    margin: 10px;
-}

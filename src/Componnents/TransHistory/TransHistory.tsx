@@ -1,29 +1,72 @@
-import React, { useState } from 'react';
-import classes from './TransHistory.module.css';
+import React, { useContext } from 'react';
+import { GlobalContext } from './../Context/GlobalContext'
+import { transType } from '../../Types/Types';
 
+
+import {List,IconButton,  ListItemText, Divider, Paper, Typography}  from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  listItemText: {
+    display: 'flex',
+    justifyContent: 'space-around'
+  },
+  typo: {
+    textTransform: 'uppercase',
+    textAlign: 'center'
+  }
+  }
+));
 
 const TransHistory = () => {
 
-  const [transHistory, setTransHistory] = useState([
-    { transid: 1, item: 'Salary', Amount: 50000 },
-    { transid: 2, item: 'Books', Amount: -500 },
-    { transid: 3, item: 'Grocery', Amount: -1000 },
-    { transid: 4, item: 'Savings', Amount: 2000 },
-  ])
+  const classes = useStyles();
+
+  const { transaction, deleteTrans, currenySign } = useContext(GlobalContext)
+  console.log(transaction)
 
 
   return (
-    <div className= {classes.history} >
-      {transHistory.map((trans, id) => {return(
-        <span className={classes.transspan} key={id}>
-          <h4>{trans.item}</h4>
-          <h4>{trans.Amount}</h4>
-        </span>
-      )})}
+    <div >
+      <br />
+      <Typography  className={classes.typo} >Transaction History</Typography>
+      <hr />
+      <Paper elevation={3}>
+      {transaction.map((trans: transType, id: number) => {
+        return (
+          <div key={trans.transid} >
+            <List component="nav" className={classes.root} aria-label="mailbox folders">
+            <IconButton onClick={() => deleteTrans(trans.transid)} color={trans.amount > 0 ? 'primary' : 'secondary'} size='small' >
+              <DeleteIcon />
+              </IconButton>
+            
+              <ListItemText className={classes.listItemText}>
+               
+                  {trans.item}
+                  
+              </ListItemText>
+                  <ListItemText>{`${(trans.amount < 0) ? '-' : ""}${currenySign}${(trans.amount < 0) ? Math.abs(trans.amount) : trans.amount}`}</ListItemText>
+              
+              </List>
+              <Divider light/>
 
+          </div>
+        )
+      })}
+</Paper>
 
     </div>
   );
 }
 
 export default TransHistory;
+

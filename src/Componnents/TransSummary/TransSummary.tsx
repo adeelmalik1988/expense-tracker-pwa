@@ -1,19 +1,63 @@
-import React from 'react';
-import classes from './TransSummary.module.css'
+import React, { useContext } from 'react';
+import { GlobalContext } from './../Context/GlobalContext'
+import { makeStyles } from '@material-ui/core/styles';
+import {CardContent, Typography, Divider, Paper} from '@material-ui/core';
 
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+    
+
+  },
+
+}));
 
 const TransSummary = () => {
-  return (
-    <div className= {classes.summary}>
-     <span>
-     <h2>Income</h2>
-     <h1>$50,000.00</h1>
-     </span>
+  const classes = useStyles();
+ 
 
-     <span>
-     <h2>Expense</h2>
-     <h1>-$30,000.00</h1>
-     </span>
+  const { transaction, currenySign } = useContext(GlobalContext)
+
+
+  return (
+    <div >
+      
+
+<Paper elevation={3} className={classes.root} >
+  <CardContent >
+      <Typography  color="textSecondary" gutterBottom>
+          INCOME</Typography>
+
+          <Typography  color="textSecondary">
+          {`${currenySign}${transaction.reduce((total, num) => {
+
+          if (num.amount > 0) {
+            total = total + num.amount
+          }
+
+          return total
+        }, 0)}`}</Typography>
+      </CardContent>
+        <Divider orientation="vertical" flexItem />
+      <CardContent>
+      <Typography  color="textSecondary" gutterBottom>
+          EXPENSE</Typography>
+          <Typography  color="textSecondary">
+          {`-${currenySign}${Math.abs(transaction.reduce((total, num) => {
+
+          if (num.amount < 0) {
+            total = total + num.amount
+          }
+
+          return total
+        }, 0))}`}  </Typography>
+        </CardContent>
+        </Paper>
+      
 
     </div>
   );

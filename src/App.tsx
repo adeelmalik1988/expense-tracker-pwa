@@ -5,16 +5,32 @@ import TransSummary from './Componnents/TransSummary/TransSummary';
 import './App.css';
 import TransHistory from './Componnents/TransHistory/TransHistory';
 import AddTrans from './Componnents/AddTrans/AddTrans';
+import { GlobalProvider } from './Componnents/Context/GlobalContext';
+
+
+
+
 
 function App() {
+
+ 
+
   return (
-    <div className="App">
-     <Heading />
-     <Balance />
-     <TransSummary />
-     <TransHistory />
-     <AddTrans />
-    </div>
+    
+      <GlobalProvider >
+        <div className="App">
+          <div >
+         
+            <Heading ></Heading>
+            <Balance ></Balance>
+            <TransSummary ></TransSummary>
+            <TransHistory></TransHistory>
+            <AddTrans></AddTrans>
+         
+          </div>
+        </div>
+      </GlobalProvider>
+    
   );
 }
 
