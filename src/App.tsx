@@ -10,7 +10,6 @@ import { GlobalProvider } from './Componnents/Context/GlobalContext';
 
 
 
-
 function App() {
 
  

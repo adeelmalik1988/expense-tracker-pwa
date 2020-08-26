@@ -27,3 +27,5 @@ Expanse Tracker(Type Script) PWA Steps:
 3- Push Notification feature
 4- Adding multi linguestic Support
 4- Currency Conversion Option
+
+Deployed on https://expense-tracker-74b33.web.app 

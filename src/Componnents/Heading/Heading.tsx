@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
-import { Typography, makeStyles } from '@material-ui/core';
+import { Typography, makeStyles, IconButton } from '@material-ui/core';
 import { createStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { GlobalContext } from '../Context/GlobalContext';
+
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import {initNotification} from './../../Services/FirebaseService'
 
 const currencies = [
   {
@@ -63,23 +66,27 @@ const Heading = () => {
 
   return (
     <div >
-      <Typography variant="h4" gutterBottom className={classes.root}>Expense Tracker</Typography>
+      <Typography variant="h4" gutterBottom className={classes.root}>Expense Tracker
+      <IconButton color="primary" aria-label="add an alarm" onClick={initNotification}>
+        <NotificationsIcon /> 
+      </IconButton>
+      </Typography>
       <div className={classes.currency}>
-      <TextField
-        id="outlined-select-currency"
-        select
-        label="Select"
-        value={currenySign}
-        onChange={handleChange}
-        helperText="Please select your currency"
-        variant="outlined"
-      >
-        {currencies.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </TextField>
+        <TextField
+          id="outlined-select-currency"
+          select
+          label="Select"
+          value={currenySign}
+          onChange={handleChange}
+          helperText="Please select your currency"
+          variant="outlined"
+        >
+          {currencies.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
       </div>
     </div>
   );
