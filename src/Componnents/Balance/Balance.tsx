@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from './../Context/GlobalContext'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import CountUp from 'react-countup'
 
 const useStyles = makeStyles({
   root: {
@@ -28,8 +29,15 @@ const Balance = () => {
 
   return (
     <div className= {classes.div}>
-      <Typography gutterBottom>Your Balance</Typography> 
-      <Typography variant="h5" gutterBottom  className={classes.typo} >{`${currenySign}${transaction.reduce((total, num) => { return total + num.amount }, 0)}`}</Typography>
+      <Typography color='textSecondary' gutterBottom>Your Balance</Typography> 
+      <Typography variant="h4" color='textPrimary' gutterBottom  className={classes.typo} >
+        {`${currenySign}`}
+        <CountUp 
+        start ={0} 
+        end={transaction.reduce((total, num) => { return total + num.amount }, 0)} 
+        duration={1.5} separator=',' 
+        />
+        </Typography>
     </div>
   );
 }

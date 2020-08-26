@@ -5,12 +5,12 @@ import { transactionType, transType, Curreny } from './../../Types/Types'
 
 
 const initalState: transactionType = {
-    transaction: [
+    transaction: [/*
         { transid: 1, item: 'Salary', amount: 50000 },
         { transid: 2, item: 'Books', amount: -500 },
         { transid: 3, item: 'Grocery', amount: -1000 },
         { transid: 4, item: 'Savings', amount: 2000 },
-    ]
+    */]
 }
 
 

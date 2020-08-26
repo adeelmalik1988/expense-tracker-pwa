@@ -3,7 +3,8 @@ import { GlobalContext } from './../Context/GlobalContext'
 import { transType } from '../../Types/Types';
 
 
-import {List,IconButton,  ListItemText, Divider, Paper, Typography}  from '@material-ui/core'
+
+import {List,IconButton,  ListItemText, Paper, Typography}  from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listItemText: {
     display: 'flex',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   },
   typo: {
     textTransform: 'uppercase',
@@ -54,11 +55,16 @@ const TransHistory = () => {
                   {trans.item}
                   
               </ListItemText>
-                  <ListItemText>{`${(trans.amount < 0) ? '-' : ""}${currenySign}${(trans.amount < 0) ? Math.abs(trans.amount) : trans.amount}`}</ListItemText>
+                  <ListItemText color={trans.amount > 0 ? 'primary' : 'secondary'} >
+                    {`${(trans.amount < 0) ? '-' : ""}${currenySign}${
+                      
+                      (trans.amount < 0) ? Math.abs(trans.amount) : trans.amount
+                      
+                      
+                      }`}</ListItemText>
               
               </List>
-              <Divider light/>
-
+              
           </div>
         )
       })}

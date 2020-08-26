@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from './../Context/GlobalContext'
 import { makeStyles } from '@material-ui/core/styles';
 import {CardContent, Typography, Divider, Paper} from '@material-ui/core';
+import CountUp from 'react-countup';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,29 +33,37 @@ const TransSummary = () => {
       <Typography  color="textSecondary" gutterBottom>
           INCOME</Typography>
 
-          <Typography  color="textSecondary">
-          {`${currenySign}${transaction.reduce((total, num) => {
+          <Typography  color="primary">
+          {`${currenySign}`}
+          <CountUp start ={0} 
+          end={transaction.reduce((total, num) => {
 
           if (num.amount > 0) {
             total = total + num.amount
           }
 
           return total
-        }, 0)}`}</Typography>
+        }, 0)}
+        duration={1.5} separator=',' 
+        /></Typography>
       </CardContent>
         <Divider orientation="vertical" flexItem />
       <CardContent>
       <Typography  color="textSecondary" gutterBottom>
           EXPENSE</Typography>
-          <Typography  color="textSecondary">
-          {`-${currenySign}${Math.abs(transaction.reduce((total, num) => {
+          <Typography  color="secondary">
+          {`-${currenySign}`}
+          <CountUp start={0}
+          end={Math.abs(transaction.reduce((total, num) => {
 
           if (num.amount < 0) {
             total = total + num.amount
           }
 
           return total
-        }, 0))}`}  </Typography>
+        }, 0))}
+        duration={1.5} separator=','  
+        />  </Typography>
         </CardContent>
         </Paper>
       

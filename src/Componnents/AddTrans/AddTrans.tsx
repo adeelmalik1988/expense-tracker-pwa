@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import {GlobalContext} from './../Context/GlobalContext'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import {TextField, Button, Typography} from '@material-ui/core';
+import {TextField, Button, Typography, Divider} from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -51,7 +51,7 @@ const onSubmit = (e: any)=>{
 
     return (
         <div >
-            <hr />
+          <Divider light/>
             <Typography className={classes.root} > Add new Transaction</Typography>
             <br />
             <form  onSubmit={onSubmit} className={classes.root} >
@@ -59,7 +59,7 @@ const onSubmit = (e: any)=>{
                     <TextField label="ITEM" variant='outlined' type='text' value={itemName} onChange={(e)=>setItemName(e.target.value)} />
                 
                 <br />
-                
+                <Typography  color="textSecondary" gutterBottom >(negative - expense, positive - income)</Typography>
                 <TextField label="AMOUNT" variant='outlined' type='number' value={itemAmount} onChange={(e)=>setItemAmount(e.target.value)} />
                 
                 <br />
