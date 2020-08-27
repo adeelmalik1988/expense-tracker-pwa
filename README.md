@@ -14,18 +14,13 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
+## Deployed on Firebase
+
 Expanse Tracker(Type Script) PWA Steps:
-1- Main UI/UX interface using Reducer for state handling
- - Expanse Tracker heading
- - total balance
- - Income Expanse seperate details
- - Transection History
- - Add new transaction
- - Option for selecting Currency
+1- Material UI has been used for application UI/UX
+2- PWA offline avaialblity feature
+3- Firebase Push Notification feature
+4- Installable Progressive Web App
 
-2- Adding PWA offline avaialblity
-3- Push Notification feature
-4- Adding multi linguestic Support
-4- Currency Conversion Option
 
-Deployed on https://expense-tracker-74b33.web.app 
+Deployed on https://expense-tracker-74b33.web.app for testing purpose
