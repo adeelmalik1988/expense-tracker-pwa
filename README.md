@@ -17,10 +17,10 @@ You will also see any lint errors in the console.
 ## Deployed on Firebase
 
 Expanse Tracker(Type Script) PWA Steps:
-1- Material UI has been used for application UI/UX
-2- PWA offline avaialblity feature
-3- Firebase Push Notification feature
-4- Installable Progressive Web App
+- Material UI has been used for application UI/UX
+- PWA offline avaialblity feature
+- Firebase Push Notification feature
+- Installable Progressive Web App
 
 
 Deployed on https://expense-tracker-74b33.web.app for testing purpose
